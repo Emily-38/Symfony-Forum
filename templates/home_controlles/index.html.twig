@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="flex justify-center items-center flex-col m-28 animate-rotate-y animate-infinite animate-duration-[10000ms] animate-delay-100">
+<img src={{asset('./media/EMBLEMA_GRANDE.png')}}  class="w-6/12 animate-rotate-y animate-infinite animate-duration-[10000ms] animate-delay-100 ">
+<a class="m-5 font-bold text-6xl" href="/login">Forum</a>
+
+
+</div>
+<div class="flex flex-row items-center justify-end mr-5 ">
+<img src={{asset('./media/dclogo.png')}} class="w-14 ">
+<a href="" class="font-bold text-xl m-5"> lien discord </a>
+</div>
+{% endblock %}

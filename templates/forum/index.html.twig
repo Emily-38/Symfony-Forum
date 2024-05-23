@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ForumController!
+{% endblock %}
+
+{% block body %}
+
+	{% block header %}
+	<header class=" flex flex-row justify-between text-white ">
+		<img src={{asset('./media/EMBLEMA_GRANDE.png')}} class="w-28 m-5 animate-rotate-y animate-infinite animate-duration-[10000ms] animate-delay-100">
+			{% block search %}
+				<div class=" flex justify-center items-center flex-row">
+					<input type="text" class="bg-white bg-opacity-50 p-2 text-center text-black h-2/5 w-80 rounded-l-full"/>
+					<button type="submite"><img class="w-3/4 bg-white bg-opacity-50 p-0.5 rounded-r-full" src="{{asset('./media/icons/loupe.svg')}}"></button> 
+				</div>  
+			{% endblock %}
+		<div class="bg-black mb-8">
+			<img src="">
+			<h2>Profile</h2>
+			<p>bagdes followers et tout le blabla</p>
+		</div>
+ 	</header>
+
+	{% endblock %}
+
+	<div id="content " class="flex flex-column text-white">
+		{# block nav qui serra ajouter a toute les pages uniquement si l'utilisateur est connecter du coup a gerer durant les modifcation acces utilisateur -> emi  #}
+		{% block nav %}
+		<div  class="w-2/12" >
+			<nav class=" fixed flex flex-col justify-between bg-black text-white p-5 w-2/12 rounded-r-2xl h-3/4">
+
+				<div class="flex flex-col">
+					<a>Les nouveautées</a>
+					<a>Top articles</a>
+					<a>Article suivis</a>
+				</div>
+
+				<div class="flex flex-col">
+					<a  href="/logout">Logout</a>
+					<a  href="/c/g/u">Mention legales</a>
+					<a>Signature</a>
+					<div>
+
+						{# ///Modif//->IMG Changed to a "a" with "img" inside to Redirect with the logo=by"Mus" #}
+
+						{# "CHANGED"   <img src={{asset('./media/dclogo.png')}} class="w-10 m-5 "> #}
+                           
+						   <a  href="https://discord.gg/5YsYWF3zBb"><img src={{asset('./media/dclogo.png')}} class="w-10 m-5 "></a>
+				        
+					</div>
+				</div>
+
+			</nav>
+		</div>
+		{% endblock %}
+ 		{# fin du block a gerer plus tard  #}
+
+
+		{% block content %}
+		
+			<div class="flex flex-col rounded-md w-3/5 contenaire mx-auto">
+				
+					<a class=" flex bg-black text-white w-52 m-2 h-8  px-3 rounded-full " href="/create_article">Create your article <img class="w-3 mx-4" src={{asset('./media/icons/304947-ffffff.svg')}} alt="ajout"/></a>
+					
+					{% for article in articles %}
+				<div class="rounded-2xl bg-black mb-5">
+					<h1 class="text-bold text-2xl p-3">{{article.title}}</h1>
+					<p class="p-6">{{article.description}}</p>
+
+					{# appelation de l'image recuperer l'image par la base de donnee et la renvoyer en lien c'est pour ca qu'elle ne s'afiche pas peut etre mettre un filtre sur le formulaire en cours de reflexion -> emi #}
+					<img src="{{article.img}}">
+
+					<div class="iconav m-2 flex justify-between">
+						<div class="flex">
+							<a href="#"><img class="h-4/5 m-1" src={{asset('./media/icons/like.svg')}} alt="like"/></a>
+							<a href="#"><img class="h-4/5 m-1" src={{asset('./media/icons/comment.svg')}} alt="comment"/></a>
+							<a href="#"><img class="h-4/5 m-1" src={{asset('./media/icons/star.svg')}} alt="save"/></a>
+							<a href="#"><img class="h-4/5 m-1" src={{asset('./media/icons/view.svg')}} alt="view"/></a>
+						</div>
+						<p>{{article.date|date("m/d/Y")}}</p>
+					</div>
+				</div>
+
+				{% endfor %}
+			</div>
+		{% endblock %}
+		{% block rightside %}
+			<div class="rightnav justify-between bg-black text-white p-5 w-1/5 h-auto rounded-l-2xl">
+				<h1>HELLO</h1>
+					<div> 
+						<span></span>
+						<img>
+						<p>
+					</div>
+			</div>
+		{% endblock %}
+	</div>
+	{% endblock %}

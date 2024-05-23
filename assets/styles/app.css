@@ -1,0 +1,11 @@
+
+/*Import-> Register.css */
+@import url('register.css');
+ /* Import-> Forum.css */
+@import url("forum.css");
+
+body {
+    
+    background: rgb(4,86,133);
+    background: linear-gradient(90deg, rgba(4,86,133,1) 0%, rgba(14,118,180,1) 16%, rgba(255,0,142,1) 100%); 
+}

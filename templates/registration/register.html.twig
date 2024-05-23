@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="contenaire flex justify-center items-center flex-col my-16 mx-auto w-3/5  ">
+     <img src={{asset('./media/EMBLEMA_GRANDE.png')}}  class="w-4/12 ">
+    <h1 class="font-bold text-2xl m-5">Register</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.Email) }}
+        {{ form_row(registrationForm.pseudo) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+
+
+
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="bg-black text-white w-full my-2 p-3 rounded-2xl text-2xl">Register</button>
+
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}

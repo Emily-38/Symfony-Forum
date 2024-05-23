@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block body %}
+
+<div class="contenaire flex justify-center items-center flex-col gap-3 my-16 mx-auto w-3/5  ">
+        <img src={{asset('./media/EMBLEMA_GRANDE.png')}}  class="w-4/12 ">
+        <h1 class="font-bold text-2xl m-5">Please sign in</h1>
+       
+<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div>
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+         <label class="m-2 text-lg font-bold " for="inputEmail" > Email:</label>
+             <input  class='bg-white bg-opacity-50 rounded-lg w-full p-2 my-2  ' type="email" value="{{ last_email }}" name="Email" id="inputEmail" autocomplete="email" required autofocus>
+         
+        <label class="m-2 text-lg font-bold" for="inputPassword" > Password:</label>
+             <input class='bg-white bg-opacity-50 rounded-lg w-full p-2 my-2 ' type="password" name="password" id="inputPassword"  autocomplete="current-password" required>
+        
+             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+             <div class="flex flex-row justify-between">
+        <a href="/register" class="underline underline-offset-6">Not registered ?</a>
+        <a href="/" class="underline underline-offset-6">forget password ?</a>
+            </div>
+        <button class="bg-black text-white w-full my-2 p-3 rounded-2xl text-2xl" type="submit">
+        Sign in
+    </button>
+</form> 
+</div>
+{% endblock %}
